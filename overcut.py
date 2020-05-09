@@ -12,12 +12,13 @@ overcut_output = ""
 
 with open(sys.argv[1], 'r') as f:
     for line in f.readlines():
+        #print(line)
 
         # Look for beginning of path
         m_path = re.search("; Pass \d* Path (\d*)", line)
         # locate start co-ordinates of path
-        start_path = re.search("G0\sX([\d\.]*) Y([\d\.]*)", line)
-        mid_path = re.search("G1\sX([\d\.]*) Y([\d\.]*)", line)
+        start_path = re.search("G0\sX([-\d\.]*) Y([-\d\.]*)", line)
+        mid_path = re.search("G1\sX([-\d\.]*) Y([-\d\.]*)", line)
 
         if m_path:
             path = int(m_path.group(1))
